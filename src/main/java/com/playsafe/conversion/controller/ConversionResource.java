@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class ConversionResource {
     @Autowired
     private ConversionServiceImpl conversionService;
 
+    @PostMapping(value = "/ktoc")
     public ResponseEntity<ConvertResponse> kelvinToCelsius(@Valid @RequestBody ConvertRequest request) {
 
         ConvertResponse response = new ConvertResponse();
@@ -29,16 +31,26 @@ public class ConversionResource {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/ctok")
     public ResponseEntity<ConvertResponse> celsiusToKelvin(@Valid @RequestBody ConvertRequest request) {
-        return null;
+        ConvertResponse response = new ConvertResponse();
+        response.setResult(conversionService.convertCelsiusToKelvin(request.getInput()));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/mtok")
     public ResponseEntity<ConvertResponse> milesToKilometers(@Valid @RequestBody ConvertRequest request) {
-        return null;
+        ConvertResponse response = new ConvertResponse();
+        response.setResult(conversionService.convertMilesToKilometers(request.getInput()));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/ktom")
     public ResponseEntity<ConvertResponse> kilometersToMiles(@Valid @RequestBody ConvertRequest request) {
-        return null;
+
+        ConvertResponse response = new ConvertResponse();
+        response.setResult(conversionService.convertKilometersToMiles(request.getInput()));
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 

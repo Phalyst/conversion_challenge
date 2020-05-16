@@ -7,6 +7,8 @@ public interface ConversionService {
 
     double KELVIN_CELSIUS_CONSTANT = 273.15;
 
+    double MILE_KILOMETER_CONSTANT = 1.6;
+
     double convertKelvinToCelsius(double kelvin);
 
     double convertCelsiusToKelvin(double celsius);

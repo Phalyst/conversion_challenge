@@ -16,11 +16,11 @@ public class ConversionServiceImpl implements ConversionService{
 
     @Override
     public double convertMilesToKilometers(double miles) {
-        return 0;
+        return miles * MILE_KILOMETER_CONSTANT;
     }
 
     @Override
     public double convertKilometersToMiles(double km) {
-        return 0;
+        return km / MILE_KILOMETER_CONSTANT;
     }
 }
