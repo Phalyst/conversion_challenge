@@ -1,4 +1,26 @@
 package com.playsafe.conversion.service;
 
-public class ConversionServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class ConversionServiceImpl implements ConversionService{
+    @Override
+    public double convertKelvinToCelsius(double kelvin) {
+        return (kelvin - KELVIN_CELSIUS_CONSTANT);
+    }
+
+    @Override
+    public double convertCelsiusToKelvin(double celsius) {
+        return (celsius + KELVIN_CELSIUS_CONSTANT);
+    }
+
+    @Override
+    public double convertMilesToKilometers(double miles) {
+        return 0;
+    }
+
+    @Override
+    public double convertKilometersToMiles(double km) {
+        return 0;
+    }
 }
